@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <script type="" text/javascript"">
+        function count() {
+            var a1 = document.getElementById("angka1").value;
+            var a2 = document.getElementById("angka2").value;
+
+            if (isNaN(a1) && isNaN(a2)) {
+                alert("angka pertama dan kedua harus angka"); 
+                return;
+            } else if (isNaN(a1)) {
+                alert("angka pertama bukan angka");
+                return;
+            } else if (isNaN(a2)) {
+                alert("angka kedua harus angka");
+                return;
+            }
+
+            a1 = parseInt(a1);
+            a2 = parseInt(a2);
+
+            var tambah = a1 + a2;
+            var kurang = a1 - a2;
+
+            document.getElementById("t1").innerHTML = a1;
+            document.getElementById("t2").innerHTML = a2;
+            document.getElementById("t3").innerHTML = tambah;
+
+            document.getElementById("k1").innerHTML = a1;
+            document.getElementById("k2").innerHTML = a2;
+            document.getElementById("k3").innerHTML = kurang;
+        }
+    </script>
+    <style>
+        .input-group {
+            margin-bottom: 5px;
+        }
+
+        .input-group label {
+            display: inline-block;
+            width: 120px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        p {
+            display: inline;
+        }
+
+        td {
+            border: 2px solid black;
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-group">
+        <label>Angka Pertama :</label>
+        <input type="text" id="angka1">
+    </div>
+    <div class="input-group">
+        <label>Angka Kedua :</label>
+        <input type="text" id="angka2">
+    </div>
+    <button onclick="count()">Count</button>
+    <br>
+    <table>
+        <tr>
+            <td id="t1"></td>
+            <td>+</td>
+            <td id="t2"></td>
+            <td>=</td>
+            <td id="t3"></td>
+        </tr>
+        <tr>
+            <td id="k1"></td>
+            <td>-</td>
+            <td id="k2"></td>
+            <td>=</td>
+            <td id="k3"></td>
+        </tr>
+    </table>
+</body>
+</html>

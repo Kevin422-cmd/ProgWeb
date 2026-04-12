@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <script type="text/javascript">
+        function generatePyramid() {
+            var tinggiInput = document.getElementById("tinggi").value;
+            var table = document.getElementById("pyramid");
+            var htmlContent = ""; 
+            var n = parseInt(tinggiInput);
+            for (var i = 1; i <= n; i++) {
+                htmlContent += "<tr>";
+                for (var j = 1; j <= (2 * n - 1); j++) {
+                    if (j >= (n - (i - 1)) && j <= (n + (i - 1))) {
+                        htmlContent += "<td style='background-color: orange;'></td>";
+                    } else {
+                        htmlContent += "<td></td>";
+                    }
+                }
+                htmlContent += "</tr>";
+            }
+            table.innerHTML = htmlContent;
+        }
+    </script>
+    <style>
+        table {
+            width: 800px;
+            height: 600px;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <p>Tinggi Piramida: 
+    <input type="text" id="tinggi"></p>
+    <button onclick="generatePyramid()">Proses</button>
+    <br><br>
+    <table id="pyramid"></table>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <script type="text/javascript">
+        function proses() {
+            var input = document.getElementById("input").value;
+            var mode = document.getElementById("mode").value;
+            var output = "";
+            if (mode == "dec-bin") {
+                if (isNaN(input) || input == "" || input < 0 || input > 255) {
+                    alert("Input harus angka 0 - 255");
+                    return;
+                }
+                var num = parseInt(input);
+                if (num == 0) {
+                    output = "0";
+                } else {
+                    while (num > 0) {
+                        output = (num % 2) + output; 
+                        num = Math.floor(num / 2);
+                    }
+                }
+                while (output.length < 8) {
+                    output = "0" + output;
+                }
+            } 
+            else {
+                if (input.length != 8) {
+                    alert("Input harus biner (0 atau 1) sebanyak 8 digit");
+                    return;
+                }
+                var hasilDesimal = 0;
+                for (var i = 0; i < input.length; i++) {
+                    var bit = input.charAt((input.length - 1) - i);
+                    
+                    if (bit == "1") {
+                        hasilDesimal = hasilDesimal + Math.pow(2, i);
+                    } else if (bit != "0") {
+                        alert("Input hanya boleh berisi angka 0 atau 1");
+                        return;
+                    }
+                }
+                output = hasilDesimal;
+            }
+            document.getElementById("output").value = output;
+        }
+        function resetForm() {
+            document.getElementById("input").value = "";
+            document.getElementById("output").value = "";
+        }
+    </script>
+  <style>
+        table { 
+            border: 1px solid black; 
+            padding: 10px; 
+            border-collapse: collapse; 
+        }
+        td { 
+            padding: 5px; 
+            border: 1px solid black; 
+            color: blue; 
+        }
+        button { 
+            color: blue; 
+        }
+        input, select { 
+            width: 180px; 
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td><b>Input:</b></td>
+            <td><input type="text" id="input"></td>
+        </tr>
+        <tr>
+            <td><b>Output:</b></td>
+            <td><input type="text" id="output" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <select id="mode">
+                    <option value="dec-bin">decimal-biner</option>
+                    <option value="bin-dec">biner-decimal</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button onclick="proses()">PROSES</button> 
+                <button onclick="resetForm()">RESET</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

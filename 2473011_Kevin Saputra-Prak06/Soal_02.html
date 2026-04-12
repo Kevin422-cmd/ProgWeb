@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <style>
+         td {
+            border: 2px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var input;
+        var num;
+        input = prompt("A number?");
+        while (isNaN(input) || input == "" || input == null) {
+            input = prompt("A number?");
+        }
+        num = parseInt(input);
+        document.write("<table>");
+        for (var i = 1; i <= num; i++) {
+            document.write("<tr>");
+            document.write("<td>" + i + "</td>");
+            document.write("<td>x</td>");
+            document.write("<td>" + num + "</td>");
+            document.write("<td>=</td>");
+            document.write("<td>" + (i * num) + "</td>");
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+    </body>
+    </html>
+
