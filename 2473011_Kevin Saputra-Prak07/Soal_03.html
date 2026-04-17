@@ -1,0 +1,167 @@
+<html>
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <style type="text/css">
+        .outer-wrapper {
+            display: inline-block; 
+            background-color: white;
+            padding: 5px;
+            margin: 20px;
+        }
+
+        .inner-box {
+            border: 1px solid black;
+            padding: 10px 15px;
+            overflow: auto; 
+        }
+        .row {
+            clear: both; 
+            margin-bottom: 8px; 
+        }
+
+        .col-left {
+            float: left; 
+            width: 105px; 
+            padding-top: 2px;
+        }
+
+        .col-right {
+            float: left; 
+        }
+        .teks-label {
+            font-size: 26px;
+        }
+
+        .input-box {
+            width: 180px;
+            height: 24px;
+            border: 1px solid #a9a9a9;
+        }
+
+        .btn-add {
+            padding: 2px 10px;
+            border: 1px solid #888;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            margin-left: 2px;
+            margin-top: 3px;
+        }
+
+        .combo-box {
+            border: 1px solid #d4a017; 
+            padding: 2px;
+            margin-top: 3px;
+        }
+    </style>
+    <script type="text/javascript">
+            var arrData = new Array();
+            function addData() {
+            var inputElement = document.getElementById("dataInput");
+            var nilai = parseInt(inputElement.value); 
+            
+            if(!isNaN(nilai)) {
+                arrData.push(nilai); 
+                inputElement.value = ""; 
+            } else {
+                alert("Masukkan angka yang valid!");
+            }
+        }
+        function prosesOperasi(pilihan) {
+            var hasil = "";
+            
+            if (pilihan == "display") {
+                hasil = arrData.join(", ");
+            } else if (pilihan == "count") {
+                hasil = arrData.length;
+            } else if (pilihan == "sum") {
+                var total = 0;
+                for (var i = 0; i < arrData.length; i++) {
+                    total += arrData[i];
+                }
+                hasil = total;
+            } else if (pilihan == "average") {
+                var total = 0;
+                for (var i = 0; i < arrData.length; i++) {
+                    total += arrData[i];
+                }
+                hasil = (arrData.length > 0) ? (total / arrData.length) : 0;
+            } else if (pilihan == "max") {
+                if (arrData.length > 0) {
+                    var maxVal = arrData[0];
+                    for (var i = 1; i < arrData.length; i++) {
+                        if (arrData[i] > maxVal) maxVal = arrData[i];
+                    }
+                    hasil = maxVal;
+                }
+            } else if (pilihan == "min") {
+                if (arrData.length > 0) {
+                    var minVal = arrData[0];
+                    for (var i = 1; i < arrData.length; i++) {
+                        if (arrData[i] < minVal) minVal = arrData[i];
+                    }
+                    hasil = minVal;
+                }
+            } else if (pilihan == "ganjil") {
+                var ganjilArr = new Array();
+                for (var i = 0; i < arrData.length; i++) {
+                    if (arrData[i] % 2 !== 0) {
+                        ganjilArr.push(arrData[i]);
+                    }
+                }
+                hasil = ganjilArr.join(", ");
+            } else if (pilihan == "genap") {
+                var genapArr = new Array();
+                for (var i = 0; i < arrData.length; i++) {
+                    if (arrData[i] % 2 === 0) {
+                        genapArr.push(arrData[i]);
+                    }
+                }
+                hasil = genapArr.join(", ");
+            } else if (pilihan == "hapus") {
+                arrData = new Array(); 
+                hasil = "";
+            }
+            
+            document.getElementById("hasilOutput").value = hasil;
+            document.getElementById("comboOperasi").selectedIndex = 0; 
+        }
+    </script>
+</head>
+<body>
+
+    <div class="outer-wrapper">
+        <div class="inner-box">
+            
+            <div class="row">
+                <div class="col-left"><span class="teks-label">Data</span></div>
+                <div class="col-right"><input type="text" id="dataInput" class="input-box"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-left"><button onclick="addData()" class="btn-add">Add</button></div>
+                <div class="col-right">
+                    <select id="comboOperasi" onchange="prosesOperasi(this.value)" class="combo-box">
+                        <option value="">Pilih Operasi</option>
+                        <option value="display">Display</option>
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="average">Average</option>
+                        <option value="max">Max</option>
+                        <option value="min">Min</option>
+                        <option value="ganjil">Ganjil</option>
+                        <option value="genap">Genap</option>
+                        <option value="hapus">Hapus</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-left"><span class="teks-label">Hasil</span></div>
+                <div class="col-right"><input type="text" id="hasilOutput" class="input-box" readonly></div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

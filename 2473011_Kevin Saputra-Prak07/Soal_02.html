@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>2473011-Kevin Saputra</title> 
+        <style type="text/css">
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 400px;
+            }
+            th, td {
+                border: 1px solid white;
+                padding: 8px 12px;
+                text-align: left;
+            }
+            th {
+                background-color: #aabbaa;
+            }
+            .biru {
+                background-color: #aaccff;
+            }
+            .oren {
+                background-color: #ffccaa;
+            }
+            .hijau {
+                background-color: #CCFFAA;
+            }
+        </style>
+
+        <script type="text/javascript">
+            function highLight(Targetbaris) {
+                document.getElementById(Targetbaris).className = "hijau";
+            }
+
+            function normal(Targetbaris, warnaDefault) {
+                document.getElementById(Targetbaris).className = warnaDefault;
+            }
+        </script>
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <th>Position</th>
+                <th>Programming Language</th>
+                <th>Ratings</th>
+            </tr>
+
+            <tr id="row1" class="biru" onmouseover="highLight('row1')" onmouseout="normal('row1', 'biru')">
+                <td>1</td>
+                <td>C</td>
+                <td>18.058%</td>
+            </tr>
+
+            <tr id="row2" class="oren" onmouseover="highLight('row2')" onmouseout="normal('row2', 'oren')">
+                <td>2</td>
+                <td>Java</td>
+                <td>18.051%</td>
+            </tr>
+
+            <tr id="row3" class="biru" onmouseover="highLight('row3')" onmouseout="normal('row3', 'biru')">
+                <td>3</td>
+                <td>C++</td>
+                <td>9.707%</td>
+            </tr>
+
+           <tr id="row4" class="oren" onmouseover="highLight('row4')" onmouseout="normal('row4', 'oren')">
+                <td>4</td>
+                <td>PHP</td>
+                <td>9.662%</td>
+            </tr>
+
+            <tr id="row5" class="biru" onmouseover="highLight('row5')" onmouseout="normal('row5', 'biru')">
+                <td>5</td>
+                <td>(Visual) Basic</td>
+                <td>6.392%</td>
+            </tr>
+        </table>
+    </body>
+</html>
