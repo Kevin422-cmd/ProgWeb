@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>2473011_KevinSaputra</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <html>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #kotak {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#add").click(function () {
+                var nama = $("#input").val(); 
+                if (nama != "") {
+                    $("<div>" + nama + "</div>").appendTo("#kotak");
+                    $("#input").val(""); 
+                }
+            });
+            $("#search").click(function () {
+                var search = $("#input").val();
+                $("#kotak div").css("text-decoration", "none");
+                if (search != "") {
+                    $("#kotak div:contains('" + search + "')").css("text-decoration", "underline");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="input">
+    <button id="add">Add</button>
+    <button id="search">Search</button>
+
+    <div id="kotak">
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+</body>
+</html>

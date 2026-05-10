@@ -1,0 +1,73 @@
+<html>
+<head>
+     <title>2473011_KevinSaputra</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+    </script>
+    <style>
+        #kotak {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 320px;
+        }
+
+        #search{
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+        }
+
+        .company{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item {
+            margin-bottom: 4px;
+            font-size: 15px;
+            color: black;
+        }
+    </style>
+    <script type="text/javascript">
+         $(document).ready(function () {
+            $("#search").on("input", function () {
+                let keyword = $(this).val().toLowerCase();
+                $(".company").css("color", "black");
+                if (keyword !== "") {
+                    $(".company").each(function () {
+                        let company = $(this).text().toLowerCase();
+                        if (company.includes(keyword)) {
+                            $(this).css("color", "red");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="kotak">
+        <input type="text" id="search">
+        <ul class="company">
+            <li class="company">Sun Microsystem</li>
+            <li class="company">Apache Software Foundation</li>
+            <li class="company">Oracle Coorporation</li>
+            <li class="company">International Bussiness Machines</li>
+            <li class="company">Microsoft Coorporation</li>
+            <li class="company">Apple Inc</li>
+            <li class="company">Sap Ag</li>
+            <li class="company">Accenture</li>
+            <li class="company">Computer Sciences Coorporation</li>
+            <li class="company">Google</li>
+            <li class="company">Softbank</li>
+            <li class="company">Yahoo</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

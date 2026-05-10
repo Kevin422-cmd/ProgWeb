@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>2473011_KevinSaputra</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        </script>
+    <style>
+        div { 
+            width:40px; 
+            height:40px; 
+            margin:5px; 
+            float:left; 
+            border:2px blue solid; 
+            text-align:center; }
+        span { 
+            color:red; 
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            
+            $("button").click(function () {
+                $("div").each(function (index, domEle) {
+                    if ($(domEle).attr("id") === "merah") {
+                        return false; 
+                    }
+                    $(domEle).css("background-color", "yellow");
+                });
+            });
+            $("div").click(function () {
+
+                $("div").css("background-color", "").removeAttr("id");
+                
+                $(this).css("background-color", "red").attr("id", "merah");
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <button>Change colors</button>
+    <br><br> <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
