@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table { 
+            border-collapse: collapse; 
+        }
+        th { 
+            background-color: black; 
+            color: white; 
+            padding: 5px; 
+        }
+        td { 
+            padding: 5px; 
+            border: 1px solid black; 
+        }
+    </style>
+</head>
+<body>
+    <h3>Selamat! Berikut adalah Daftar Mahasiswa yang mendapat Nilai A Pemograman Web SI Tahun Ajaran 2023/2024</h3>
+    
+    <div style="border: 1px solid black; padding: 10px; width: 300px;">
+        <input type="radio" name="kelas" value="all" checked> All<br>
+        <input type="radio" name="kelas" value="A"> Kelas A<br>
+        <input type="radio" name="kelas" value="B"> Kelas B<br>
+        <button id="Search">Search</button>
+    </div>
+    <br>
+
+    <table id="tabelMhsw">
+        <thead>
+            <tr>
+                <th>NRP</th>
+                <th>NAMA</th>
+                <th>KELAS</th>
+                <th>NILAI AKHIR</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    </body>
+</html>
+<script>
+    $(document).ready(function() {
+        $("#Search").click(function() {
+            var pilihanKelas = $(":radio[name='kelas']:checked").val();
+            var urlData = "";
+            if (pilihanKelas === "all") {
+                urlData = "nilai.js";
+            } else if (pilihanKelas === "A") {
+                urlData = "nilaiA.js";
+            } else if (pilihanKelas === "B") {
+                urlData = "nilaiB.js";
+            }
+            $.getJSON(urlData, function(dataJSON) {
+                $("#tabelMhsw tbody").empty();
+                for (var i = 0; i < dataJSON.length; i++) {
+                    var baris = "<tr>" +
+                                "<td>" + dataJSON[i].NRP + "</td>" +
+                                "<td>" + dataJSON[i].NAMA + "</td>" +
+                                "<td>" + dataJSON[i].KELAS + "</td>" +
+                                "<td>" + dataJSON[i].NILAI + "</td>" +
+                                "</tr>";
+                    $("#tabelMhsw tbody").append(baris);
+                }
+                $("#tabelMhsw tbody tr:even").css("background-color", "#FFFFCC"); 
+                $("#tabelMhsw tbody tr:odd").css("background-color", "#CCFFAA"); 
+            });
+        });
+    });
+</script>

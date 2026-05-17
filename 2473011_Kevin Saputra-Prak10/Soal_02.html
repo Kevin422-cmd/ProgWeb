@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2473011-Kevin Saputra</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+        }
+        .box-1 { 
+            border: 2px solid black; 
+            padding: 10px; 
+            width: 350px; 
+            margin-bottom: 20px; 
+            box-shadow: 3px 3px 5px grey;
+        }
+        .box-1 input { 
+            width: 95%; 
+            margin-bottom: 5px; 
+        }
+        .box-2 { 
+            border: 1px solid black; 
+            padding: 20px; 
+            max-width: 800px; 
+            display: none; 
+        }
+        .header { 
+            text-align: center; 
+            color: blue; 
+            border-bottom: 1px solid black; 
+            padding-bottom: 10px; 
+            margin-bottom: 10px;
+        }
+        .post { 
+            margin-bottom: 20px; 
+        }
+        .posttitle { 
+            color: blue; 
+            text-decoration: underline; 
+        }
+        .postmeta { 
+            font-style: italic;
+             margin-bottom: 10px; 
+            }
+        .footer { 
+            border-top: 1px solid black; 
+            margin-top: 20px; 
+            padding-top: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box-1">
+        <input type="text" value="Title"><br>
+        <input type="text" value="Content"><br>
+        <input type="text" value="Generator"><br><br>
+        <button id="btnLook">Look</button>
+    </div>
+
+    <div class="box-2" id="hasilWeb">
+        <h2 class="header">
+            <a href="#" 
+            id="outTitle" 
+            style="color: blue; 
+            text-decoration: underline;">
+            </a></h2>
+        <div id="outContent"></div>
+
+        <div class="footer" id="outGenerator"></div>
+    </div>
+
+    <script>
+        document.getElementById("btnLook").onclick = function() {
+            var xhttp;
+            if (window.XMLHttpRequest) {
+                xhttp = new XMLHttpRequest();
+            } else { 
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            
+            xhttp.open("GET", "SIJson.txt", false);
+            xhttp.send();
+            
+            var myJSONText = xhttp.responseText;
+            var data = eval("(" + myJSONText + ")");
+            
+            document.getElementById("outTitle").innerHTML = data.Title;
+            document.getElementById("outGenerator").innerHTML = data.Generator;
+            
+            var outContent = document.getElementById("outContent");
+            outContent.innerHTML = "";
+            
+            for (var i = 0; i < data.Content.length; i++) {
+                var matkul = data.Content[i].matkul;
+                var author = data.Content[i].author;
+                var date = data.Content[i].date;
+                var desc = data.Content[i].description;
+                var tags = data.Content[i].tags;
+                
+                var postHTML = "<div class='post'>" +
+                               "<div class='post-title'><a href='#'>" + matkul + "</a></div>" +
+                               "<div class='post-meta'>By : " + author + " / " + date + "</div>" +
+                               "<p>" + desc + "</p>" +
+                               "<div>Universitas : <a href='#' style='color:blue;'>Click Here</a></div>" +
+                               "<div>Tag(s) : " + tags + "</div>" +
+                               "</div><br>";
+                               
+                outContent.innerHTML += postHTML;
+            }
+            document.getElementById("hasilWeb").style.display = "block";
+        };
+    </script>
+</body>
+</html>
